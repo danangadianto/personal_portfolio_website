@@ -103,17 +103,17 @@
             <p>Koleksi karya fotografi terbaik dalam format grid.</p>
         </div>
         <div class="grid">
-            <article class="card">
+            <article class="card photo-card">
                 <img src="img/ (5).JPG" alt="Landscape" />
                 <h3>Bundaran HI</h3>
                 <p>Taken by Redmi Note 8</p>
             </article>
-            <article class="card">
+            <article class="card photo-card">
                 <img src="img/ (6).JPG" alt="Golden Light" />
                 <h3>Golden Light</h3>
                 <p>Taken by Redmi Note 8</p>
             </article>
-            <article class="card">
+            <article class="card photo-card">
                 <img src="img/ (27).JPG" alt="Motion" />
                 <h3>Fine Art</h3>
                 <p>Taken by Canon G16</p>
@@ -121,6 +121,14 @@
         </div>
         <button id="viewFullPhoto" class="btn-outline">Lihat Semua Photo</button>
     </section>
+
+    <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="photoModalClose" aria-label="Tutup foto">✕</button>
+            <h3 id="photoModalTitle">Preview Foto</h3>
+            <img id="photoModalImg" src="" alt="" />
+        </div>
+    </div>
 
     <section id="video" class="gallery-section">
         <div class="section-header">

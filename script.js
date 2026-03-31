@@ -51,5 +51,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Photo modal functionality
+  const photoCards = document.querySelectorAll(".photo-card");
+  const photoModal = document.getElementById("photoModal");
+  const photoModalImg = document.getElementById("photoModalImg");
+  const photoModalTitle = document.getElementById("photoModalTitle");
+  const photoModalClose = document.getElementById("photoModalClose");
+
+  function closePhotoModal() {
+    if (photoModal) {
+      photoModal.classList.remove("open");
+    }
+  }
+
+  photoCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const img = card.querySelector("img");
+      const title = card.querySelector("h3").textContent;
+      if (img && photoModal && photoModalImg && photoModalTitle) {
+        photoModalImg.src = img.src;
+        photoModalImg.alt = img.alt;
+        photoModalTitle.textContent = title;
+        photoModal.classList.add("open");
+      }
+    });
+  });
+
+  if (photoModalClose) {
+    photoModalClose.addEventListener("click", closePhotoModal);
+  }
+
+  if (photoModal) {
+    photoModal.addEventListener("click", (e) => {
+      if (e.target === photoModal) {
+        closePhotoModal();
+      }
+    });
+  }
+
   // Video cards now have inline iframes for direct playback
 });

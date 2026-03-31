@@ -517,6 +517,14 @@ body {
     cursor: pointer;
 }
 
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    margin-top: 2rem;
+}
+
 .video-wrapper {
     aspect-ratio: 16/9;
     width: 100%;
