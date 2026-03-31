@@ -51,39 +51,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  const videoCards = document.querySelectorAll(".video-card");
-  const modal = document.getElementById("videoModal");
-  const videoWrapper = document.getElementById("videoWrapper");
-  const modalClose = document.getElementById("modalClose");
-
-  function closeModal() {
-    if (modal) {
-      modal.classList.remove("open");
-    }
-    if (videoWrapper) {
-      videoWrapper.innerHTML = "";
-    }
-  }
-
-  videoCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const id = card.getAttribute("data-video-id");
-      if (id && modal && videoWrapper) {
-        videoWrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        modal.classList.add("open");
-      }
-    });
-  });
-
-  if (modalClose) {
-    modalClose.addEventListener("click", closeModal);
-  }
-
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-  }
+  // Video cards now have inline iframes for direct playback
 });

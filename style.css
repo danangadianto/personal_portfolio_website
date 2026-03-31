@@ -446,7 +446,7 @@ body {
     box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
 }
 
-.card img {
+.card img, .card iframe {
     width: 100%;
     display: block;
     aspect-ratio: 16 / 10;
