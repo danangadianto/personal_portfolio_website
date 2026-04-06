@@ -89,5 +89,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Video modal functionality
+  const videoCards = document.querySelectorAll(".video-card");
+  const videoModal = document.getElementById("videoModal");
+  const videoModalIframe = document.getElementById("videoModalIframe");
+  const videoModalTitle = document.getElementById("videoModalTitle");
+  const videoModalClose = document.getElementById("videoModalClose");
+
+  function closeVideoModal() {
+    if (videoModal) {
+      videoModal.classList.remove("open");
+      if (videoModalIframe) {
+        videoModalIframe.src = ""; // Stop video when closing
+      }
+    }
+  }
+
+  videoCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const videoId = card.getAttribute("data-video-id");
+      const title = card.querySelector("h3").textContent;
+      if (videoId && videoModal && videoModalIframe && videoModalTitle) {
+        videoModalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        videoModalTitle.textContent = title;
+        videoModal.classList.add("open");
+      }
+    });
+  });
+
+  if (videoModalClose) {
+    videoModalClose.addEventListener("click", closeVideoModal);
+  }
+
+  if (videoModal) {
+    videoModal.addEventListener("click", (e) => {
+      if (e.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+  }
+
   // Video cards now have inline iframes for direct playback
 });
