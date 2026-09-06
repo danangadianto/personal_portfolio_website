@@ -1,221 +1,328 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio Fotografi & Video Editing</title>
+    <meta name="description" content="Danang Adianto — Video Editor, Content Creator, Photographer and Visual Storyteller." />
+    <title>Danang Adianto — Video Editor & Content Creator</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="brand">Danang Adianto</div>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+    <header class="site-header" id="top">
+        <a class="brand" href="#top" aria-label="Danang Adianto home">
+            <span class="brand-mark">D</span>
+            <span>Danang Adianto</span>
+        </a>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
         </button>
+
         <nav class="nav" id="mainNav">
-            <a href="index.html">Home</a>
             <a href="#about">About</a>
-            <a href="#photo">Photo</a>
-            <a href="#video">Video</a>
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">☾</button>
         </nav>
     </header>
 
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Photography & Video Editing</h1>
-            <p>Crafting visual stories with minimalism and elegance.</p>
-            <a href="#photo" class="btn">View Portofolio</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>Tentang Saya</h2>
-        <div class="about-inner">
-            <img src="img/profile-pic.png" alt="Foto Profil" class="profile-photo" />
-            <div class="about-copy">
-                <p style="text-align: justify;">Saya adalah seorang video editor dan fotografer yang berfokus pada visual storytelling dengan pendekatan yang kreatif
-                dan detail. Saya menikmati proses mengubah ide menjadi karya visual yang menarik, baik dalam bentuk foto maupun video
-                yang mampu menyampaikan pesan secara kuat dan relevan.</p>
-                <p style="text-align: justify;">Berawal dari hobi hingga berkembang menjadi pengalaman profesional, saya telah mengerjakan berbagai konten untuk media
-                sosial, dokumentasi, dan kebutuhan branding. Saya terbiasa beradaptasi dengan berbagai gaya visual serta terus mengikuti
-                perkembangan tren untuk menghasilkan karya yang tidak hanya menarik secara estetika, tetapi juga memiliki dampak.</p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">VIDEO EDITOR · CONTENT CREATOR · VISUAL STORYTELLER</p>
+                <h1>I turn raw footage into <span>content people want to watch.</span></h1>
+                <p class="hero-copy">
+                    I edit videos for YouTube, TikTok, Instagram and digital brands —
+                    combining clean visuals, strong pacing and purposeful storytelling.
+                </p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn">Explore my work <span>↗</span></a>
+                    <a href="#contact" class="btn btn-ghost">Let's work together</a>
+                </div>
+                <div class="hero-meta">
+                    <span><i></i> Based in Indonesia</span>
+                    <span>Available for freelance projects</span>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="experience" class="experience-section">
-        <div class="section-header">
-            <h2>Pengalaman Kerja</h2>
-            <p>Proyek dan posisi yang berhubungan dengan konten visual.</p>
-        </div>
-        <div class="experience-list">
-            <article class="exp-item">
-                <h3>Content Creator & Video Editor (Personal Project)</h3>
-                <span>2023 – Sekarang</span>
-                <ul>
-                    <li>Mengembangkan konten video secara mandiri untuk platform digital (YouTube & media sosial)</li>
-                    <li>Mengelola seluruh proses produksi mulai dari ide, pengambilan footage, hingga editing akhir</li>
-                    <li>Mengeksplorasi berbagai gaya editing dan storytelling untuk meningkatkan kualitas visual dan engagement</li>
-                    <li>Menggunakan platform sebagai sarana pengembangan skill dan eksplorasi kreativitas</li>
-                </ul>
-            </article>
-            <article class="exp-item">
-                <h3>Freelance Photographer</h3>
-                <span>2022 – Sekarang</span>
-                <ul>
-                    <li>Mengerjakan berbagai proyek fotografi personal sebagai pengembangan hobi yang diseriusi</li>
-                    <li>Menghasilkan karya fotografi dengan pendekatan komposisi, pencahayaan, dan storytelling visual</li>
-                    <li>Mengeksplorasi berbagai gaya fotografi seperti lifestyle, dokumentasi, dan visual kreatif</li>
-                </ul>
-            </article>
-            <article class="exp-item">
-                <h3>Video Editor & Photographer – SMPK Anugerah (Unit SMP)</h3>
-                <span>2022 - 2026</span>
-                <ul>
-                    <li>Mengelola dokumentasi kegiatan sekolah dalam bentuk foto dan video</li>
-                    <li>Mengedit video untuk kebutuhan publikasi dan branding sekolah (YouTube & Instagram)</li>
-                    <li>Berkontribusi dalam pengembangan channel YouTube sekolah hingga mencapai 100+ subscribers</li>
-                    <li>Membuat konten visual untuk media sosial sekolah (@smpk_anugerah)</li>
-                    <li>Berkolaborasi dengan tim dalam memenuhi kebutuhan media dan promosi institusi</li>
-                </ul>
-            </article>
-            <article class="exp-item">
-                <h3>Content Designer – Barainstitute.id</h3>
-                <span>2021</span>
-                <ul>
-                    <li>Mendesain dan mengelola konten visual harian untuk Instagram dengan fokus pada topik finance, ekonomi, dan teknologi</li>
-                    <li>Mengembangkan konsep visual yang sesuai dengan target audience dan identitas brand</li>
-                    <li>Berkontribusi dalam peningkatan engagement melalui pendekatan desain yang lebih informatif dan menarik</li>
-                </ul>
-            </article>
-        </div>
-    </section>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-frame">
+                    <img src="img/profile-pic.png" alt="" />
+                    <div class="hero-frame-label">DANANG / EDITOR</div>
+                </div>
+                <div class="hero-orbit hero-orbit-one"></div>
+                <div class="hero-orbit hero-orbit-two"></div>
+            </div>
+        </section>
 
-    <section id="photo" class="gallery-section">
-        <div class="section-header">
-            <h2>Photography</h2>
-            <p>Koleksi karya fotografi terbaik dalam format grid.</p>
-        </div>
-        <div class="grid">
-            <article class="card photo-card">
-                <img src="img/ (5).JPG" alt="Landscape" />
-                <h3>Bundaran HI</h3>
-                <p>Taken by Redmi Note 8</p>
-            </article>
-            <article class="card photo-card">
-                <img src="img/ (6).JPG" alt="Golden Light" />
-                <h3>Golden Light</h3>
-                <p>Taken by Redmi Note 8</p>
-            </article>
-            <article class="card photo-card">
-                <img src="img/ (27).JPG" alt="Motion" />
-                <h3>Fine Art</h3>
-                <p>Taken by Canon G16</p>
-            </article>
-        </div>
-        <button id="viewFullPhoto" class="btn-outline">Lihat Semua Photo</button>
-    </section>
+        <section id="about" class="section about">
+            <div class="section-heading">
+                <p class="eyebrow">01 — ABOUT</p>
+                <h2>A creative editor with a <em>creator's perspective.</em></h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-photo-wrap">
+                    <img src="img/profile-pic.png" alt="Danang Adianto" class="profile-photo" />
+                    <div class="photo-caption">Creative work / Indonesia</div>
+                </div>
+
+                <div class="about-copy">
+                    <p class="lead">
+                        I'm Danang, a video editor and content creator who enjoys turning ideas
+                        into clear, engaging visual stories.
+                    </p>
+                    <p>
+                        My approach goes beyond simply cutting clips together. I pay attention
+                        to hooks, pacing, visual rhythm, storytelling and the expectations of
+                        each platform so the final video feels intentional from the first frame
+                        to the last.
+                    </p>
+                    <p>
+                        I've worked across video, photography and graphic content, which gives
+                        me a broader understanding of how visuals can support a creator, brand
+                        or business.
+                    </p>
+
+                    <div class="about-facts">
+                        <div><strong>Video</strong><span>Editing & storytelling</span></div>
+                        <div><strong>Social</strong><span>YouTube · TikTok · Instagram</span></div>
+                        <div><strong>Visual</strong><span>Photography & design</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="section work-section">
+            <div class="section-heading row-heading">
+                <div>
+                    <p class="eyebrow">02 — SELECTED WORK</p>
+                    <h2>Work that speaks for itself.</h2>
+                </div>
+                <p class="section-note">A selection of projects across different formats and styles.</p>
+            </div>
+
+            <div class="work-grid">
+                <article class="work-card work-card-featured video-card" data-video-id="50JD16I07nw" data-title="Educational Video">
+                    <div class="media-wrap">
+                        <img src="https://img.youtube.com/vi/50JD16I07nw/hqdefault.jpg" alt="Educational video thumbnail" />
+                        <button class="play-button" aria-label="Play Educational Video">▶</button>
+                        <span class="media-tag">LONG-FORM</span>
+                    </div>
+                    <div class="work-info">
+                        <div>
+                            <h3>Educational Video</h3>
+                            <p>Long-form editing with a structured, informative flow.</p>
+                        </div>
+                        <span class="work-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="work-card video-card" data-video-id="yjjVJoZhDRw" data-title="Running Vlog">
+                    <div class="media-wrap">
+                        <img src="https://img.youtube.com/vi/yjjVJoZhDRw/hqdefault.jpg" alt="Running vlog thumbnail" />
+                        <button class="play-button" aria-label="Play Running Vlog">▶</button>
+                        <span class="media-tag">VLOG</span>
+                    </div>
+                    <div class="work-info">
+                        <div>
+                            <h3>Running Vlog</h3>
+                            <p>Short-form storytelling built around movement and rhythm.</p>
+                        </div>
+                        <span class="work-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="work-card video-card" data-video-id="PZCvvhzt58c" data-title="Social Reel">
+                    <div class="media-wrap">
+                        <img src="https://img.youtube.com/vi/PZCvvhzt58c/hqdefault.jpg" alt="Social reel thumbnail" />
+                        <button class="play-button" aria-label="Play Social Reel">▶</button>
+                        <span class="media-tag">SOCIAL</span>
+                    </div>
+                    <div class="work-info">
+                        <div>
+                            <h3>Social Reel</h3>
+                            <p>Fast-paced social content designed for vertical viewing.</p>
+                        </div>
+                        <span class="work-arrow">↗</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-actions">
+                <a href="gallery/video.html" class="btn btn-ghost">View all video work <span>→</span></a>
+            </div>
+
+            <div class="subsection-heading">
+                <div>
+                    <p class="eyebrow">PHOTOGRAPHY</p>
+                    <h3>A second language of visual storytelling.</h3>
+                </div>
+                <a href="gallery/photo.html" class="text-link">View full gallery →</a>
+            </div>
+
+            <div class="photo-grid">
+                <article class="photo-card" data-title="Bundaran HI">
+                    <img src="img/(5).JPG" alt="Bundaran HI" />
+                    <div class="photo-overlay"><span>Bundaran HI</span></div>
+                </article>
+                <article class="photo-card" data-title="Golden Light">
+                    <img src="img/(6).JPG" alt="Golden Light" />
+                    <div class="photo-overlay"><span>Golden Light</span></div>
+                </article>
+                <article class="photo-card" data-title="Fine Art">
+                    <img src="img/(27).JPG" alt="Fine Art" />
+                    <div class="photo-overlay"><span>Fine Art</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience-section">
+            <div class="section-heading">
+                <p class="eyebrow">03 — EXPERIENCE</p>
+                <h2>Experience across <em>content & visual media.</em></h2>
+            </div>
+
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-date">2022 — 2026</div>
+                    <div class="timeline-content">
+                        <h3>Video Editor & Photographer</h3>
+                        <p class="company">SMPK Anugerah · Unit SMP</p>
+                        <ul>
+                            <li>Created and edited photo/video documentation for school activities and digital publications.</li>
+                            <li>Edited content for YouTube and Instagram while supporting the school's visual communication.</li>
+                            <li>Collaborated with the team on media and promotional needs.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2023 — Present</div>
+                    <div class="timeline-content">
+                        <h3>Content Creator & Video Editor</h3>
+                        <p class="company">Personal Projects</p>
+                        <ul>
+                            <li>Developed content independently for YouTube and social media.</li>
+                            <li>Handled the process from concept and footage to editing and publishing.</li>
+                            <li>Experimented with hooks, pacing, storytelling and different content formats.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h3>Content Designer</h3>
+                        <p class="company">Barainstitute.id</p>
+                        <ul>
+                            <li>Designed daily Instagram content around finance, economics and technology.</li>
+                            <li>Developed visual concepts based on target audiences and brand identity.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-date">2022 — Present</div>
+                    <div class="timeline-content">
+                        <h3>Freelance Photographer</h3>
+                        <p class="company">Independent</p>
+                        <ul>
+                            <li>Explored lifestyle, documentary and creative photography.</li>
+                            <li>Focused on composition, lighting and visual storytelling.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="section-heading row-heading">
+                <div>
+                    <p class="eyebrow">04 — SKILLS</p>
+                    <h2>Tools are important. <em>Thinking is more important.</em></h2>
+                </div>
+                <p class="section-note">A combination of technical execution and creative direction.</p>
+            </div>
+
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <span class="skill-number">01</span>
+                    <span class="skill-icon">✦</span>
+                    <h3>Video Editing</h3>
+                    <p>Storytelling, pacing, hooks, captions, B-roll, transitions and social-first editing.</p>
+                    <div class="skill-tags"><span>Premiere Pro</span><span>CapCut</span></div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">02</span>
+                    <span class="skill-icon">◌</span>
+                    <h3>Content Strategy</h3>
+                    <p>Content ideas, audience perspective, platform adaptation and visual communication.</p>
+                    <div class="skill-tags"><span>YouTube</span><span>TikTok</span><span>Instagram</span></div>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-number">03</span>
+                    <span class="skill-icon">⌁</span>
+                    <h3>Photography & Design</h3>
+                    <p>Composition, lighting, photo editing and visual assets that support a consistent brand.</p>
+                    <div class="skill-tags"><span>Lightroom</span><span>Photoshop</span><span>Canva</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-inner">
+                <div>
+                    <p class="eyebrow">05 — CONTACT</p>
+                    <h2>Have footage?<br /><em>Let's make it worth watching.</em></h2>
+                </div>
+                <div class="contact-copy">
+                    <p>
+                        Tell me what you're creating, what you need edited, and where the content
+                        will be published. I'll be happy to discuss the best approach.
+                    </p>
+                    <div class="contact-actions">
+                        <a href="mailto:danangadianto1453@gmail.com" class="btn">Email me <span>↗</span></a>
+                        <a href="https://www.instagram.com/danangadianto/" target="_blank" rel="noopener" class="contact-link">Instagram ↗</a>
+                        <a href="https://www.linkedin.com/in/danangadianto/" target="_blank" rel="noopener" class="contact-link">LinkedIn ↗</a>
+                    </div>
+                    <a href="CV_Danang_Adianto_VideoEditor.pdf" download class="cv-link">Download CV ↓</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>© 2026 Danang Adianto</span>
+        <span>Video Editor · Content Creator</span>
+        <a href="#top">Back to top ↑</a>
+    </footer>
 
     <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
-        <div class="modal-content">
-            <button class="modal-close" id="photoModalClose" aria-label="Tutup foto">✕</button>
-            <h3 id="photoModalTitle">Preview Foto</h3>
+        <div class="modal-content image-modal-content">
+            <button class="modal-close" id="photoModalClose" aria-label="Close photo">×</button>
+            <p class="eyebrow">PHOTOGRAPHY</p>
+            <h3 id="photoModalTitle">Preview</h3>
             <img id="photoModalImg" src="" alt="" />
         </div>
     </div>
 
-    <section id="video" class="gallery-section">
-        <div class="section-header">
-            <h2>Video Editing</h2>
-            <p style="text-align: justify;">Klip video pilihan yang dapat diperluas ke tampilan penuh. Beberapa video yang ditampilkan mencakup berbagai genre dan
-            gaya editing yang berbeda, sebagai bentuk eksplorasi visual dan storytelling. Saya juga terus terbuka untuk mencoba
-            serta mengembangkan gaya editing baru sesuai kebutuhan dan tren yang berkembang.</p>
+    <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+        <div class="modal-content video-modal-content">
+            <button class="modal-close" id="videoModalClose" aria-label="Close video">×</button>
+            <p class="eyebrow">VIDEO</p>
+            <h3 id="videoModalTitle">Preview</h3>
+            <div class="video-wrapper">
+                <iframe id="videoModalIframe" src="" title="Video preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="grid">
-            <article class="card video-card">
-                <iframe src="https://www.youtube.com/embed/50JD16I07nw?rel=0&modestbranding=1" 
-                        title="Educational Video" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="video-thumb"></iframe>
-                <h3>Educational Video</h3>
-                <p>Durasi 17 menit membahas kebijakan ekonomi dari sudut pandang akademis</p>
-            </article>
-            <article class="card video-card">
-                <iframe src="https://www.youtube.com/embed/yjjVJoZhDRw?rel=0&modestbranding=1" 
-                        title="Running Vlog" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="video-thumb"></iframe>
-                <h3>Running Vlog</h3>
-                <p>Vlog singkat tentang kegiatan olahraga dengan storytelling</p>
-            </article>
-            <article class="card video-card">
-                <iframe src="https://www.youtube.com/embed/PZCvvhzt58c?rel=0&modestbranding=1" 
-                        title="Social Reel" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="video-thumb"></iframe>
-                <h3>Social Reel</h3>
-                <p>Rutinitas konten selama Ramadhan dengan format shorts, reels, dan tiktok</p>
-            </article>
-        </div>
-        <button id="viewFullVideo" class="btn-outline">Lihat Semua Video</button>
-    </section>
-
-    <section id="skills" class="skills-section">
-        <div class="section-header">
-            <h2>Keahlian Utama</h2>
-            <p>Area spesialisasi dalam fotografi & konten visual.</p>
-        </div>
-        <div class="skill-grid">
-            <article class="skill-card">
-                <div class="skill-icon">🎬</div>
-                <h3>Video Editing</h3>
-                <p>Adobe Premiere, CapCut PC, Storytelling Editing.</p>
-            </article>
-            <article class="skill-card">
-                <div class="skill-icon">📸</div>
-                <h3>Photography</h3>
-                <p>Photo Composition, Lighting, Lightroom, Portrait & Commercial.</p>
-            </article>
-            <article class="skill-card">
-                <div class="skill-icon">🖌️</div>
-                <h3>Graphic Design</h3>
-                <p>Photoshop, Canva, Layout, Branding Kit dan Konten Sosial Media.</p>
-            </article>
-        </div>
-        <div class="skill-badges">
-            <span class="badge">Photography</span>
-            <span class="badge">CapCut</span>
-            <span class="badge">Adobe Photoshop</span>
-            <span class="badge">Lightroom</span>
-            <span class="badge">Canva</span>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:danangadianto1453@gmail.com">danangadianto1453@gmail.com</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/danangadianto/" target="_blank">@danangadianto</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/danangadianto/" target="_blank">Danang Adianto</a></p>
-        <div class="contact-actions">
-            <a href="https://wa.me/+6285928998873" class="btn">Contact Now</a>
-            <a href="CV_Danang_Adianto_VideoEditor.pdf" download class="btn-outline">Download CV</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <p>© 2026 Danang Adianto. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>

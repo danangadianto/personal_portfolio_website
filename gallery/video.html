@@ -1,104 +1,553 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galeri Video Editing</title>
+    <meta name="description"
+        content="Selected video editing work by Danang Adianto — educational content, vlogs, short films, social content, and documentary-style projects." />
+    <title>Video Work — Danang Adianto</title>
     <link rel="stylesheet" href="../style.css" />
+
+    <style>
+        /* =====================================================
+           GALLERY PAGE — VIDEO
+           Uses the same visual language as the main portfolio.
+           ===================================================== */
+
+        .gallery-page {
+            min-height: 100vh;
+        }
+
+        .gallery-hero {
+            width: min(1240px, 90vw);
+            margin: 0 auto;
+            padding: 7rem 0 4rem;
+        }
+
+        .gallery-hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.55fr);
+            gap: 5rem;
+            align-items: end;
+        }
+
+        .gallery-kicker {
+            margin: 0 0 1rem;
+            color: var(--accent);
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .gallery-hero h1 {
+            max-width: 850px;
+            margin: 0;
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: .94;
+            letter-spacing: -.065em;
+        }
+
+        .gallery-hero h1 span {
+            color: var(--accent);
+        }
+
+        .gallery-intro {
+            margin: 0;
+            color: var(--muted);
+            font-size: .95rem;
+            line-height: 1.7;
+        }
+
+        .gallery-intro a {
+            color: var(--text);
+            text-decoration-color: var(--accent);
+            text-underline-offset: 4px;
+        }
+
+        .gallery-section {
+            width: 100%;
+            padding: 1rem 5vw 7rem;
+        }
+
+        .gallery-grid {
+            width: min(1240px, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .gallery-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .gallery-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #080808;
+        }
+
+        .gallery-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .45s ease, filter .45s ease;
+        }
+
+        .gallery-card:hover .gallery-media img {
+            transform: scale(1.045);
+            filter: brightness(.68);
+        }
+
+        .gallery-tag {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            padding: .3rem .5rem;
+            background: rgba(0, 0, 0, .68);
+            color: #fff;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .gallery-play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 58px;
+            height: 58px;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .48);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: 1rem;
+            backdrop-filter: blur(8px);
+            transition: transform .2s ease, background .2s ease, color .2s ease;
+        }
+
+        .gallery-card:hover .gallery-play {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: var(--accent);
+            color: #111;
+        }
+
+        .gallery-info {
+            min-height: 112px;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 0 1.3rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .gallery-info h2 {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.25;
+            letter-spacing: -.02em;
+        }
+
+        .gallery-info p {
+            margin: .4rem 0 0;
+            color: var(--muted);
+            font-size: .78rem;
+            line-height: 1.55;
+        }
+
+        .gallery-arrow {
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 1.15rem;
+            transition: transform .2s ease;
+        }
+
+        .gallery-card:hover .gallery-arrow {
+            transform: translate(3px, -3px);
+        }
+
+        .gallery-footer {
+            width: min(1240px, 100%);
+            margin: 2.5rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .gallery-footer-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: .78rem;
+        }
+
+        .gallery-back {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            min-height: 46px;
+            padding: .7rem 1rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: .8rem;
+            font-weight: 750;
+            transition: border-color .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .gallery-back:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            place-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, .82);
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-modal.open {
+            display: grid;
+        }
+
+        .gallery-modal-content {
+            position: relative;
+            width: min(960px, 94vw);
+            padding: 1.2rem;
+            background: var(--card);
+            border: 1px solid var(--line-strong);
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-modal-content h2 {
+            margin: 0 0 1rem;
+            padding-right: 3rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-close {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .65);
+            color: #fff;
+            font-size: 1.35rem;
+            cursor: pointer;
+        }
+
+        .gallery-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 0;
+            display: block;
+            background: #000;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .gallery-hero {
+                padding: 5rem 0 3rem;
+            }
+
+            .gallery-hero h1 {
+                font-size: clamp(2.9rem, 14vw, 5rem);
+            }
+
+            .gallery-section {
+                padding-left: 4vw;
+                padding-right: 4vw;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="site-header">
-        <div class="brand">Danang Adianto</div>
+        <a class="brand" href="../index.html" aria-label="Danang Adianto home">
+            <span class="brand-mark">D</span>
+            <span>Danang Adianto</span>
+        </a>
+
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
         <nav class="nav" id="mainNav">
             <a href="../index.html">Home</a>
-            <a href="#about">About</a>
-            <a href="#photo">Photo</a>
-            <a href="#video">Video</a>
-            <a href="#contact">Contact</a>
+            <a href="../index.html#about">About</a>
+            <a href="photo.html">Photography</a>
+            <a href="video.html">Video</a>
+            <a href="../index.html#contact">Contact</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
         </nav>
     </header>
 
-    <main class="gallery-section">
-        <div class="section-header">
-            <h2>Full Gallery - Video Editing</h2>
-            <p style="text-align: justify;">Portfolio video ini menampilkan berbagai karya dengan pendekatan
-                storytelling yang terstruktur serta eksplorasi gaya
-                visual yang beragam. Seluruh video yang ditampilkan merupakan hasil pengembangan dari minat pribadi
-                sekaligus pengalaman
-                profesional saya di bidang video editing dan produksi konten. Untuk melihat lebih banyak karya lainnya
-                secara lengkap,
-                silakan mengunjungi channel YouTube Danang Adianto dan SMPK Anugerah.</p>
-        </div>
-        <div class="grid">
-            <article class="card video-card" data-video-id="50JD16I07nw">
-                <img src="https://img.youtube.com/vi/50JD16I07nw/maxresdefault.jpg" alt="Personal Education Edit"
-                    class="video-thumb" />
-                <h3>Personal Education Edit</h3>
-                <p>Konten edukasi pribadi mengenai kebijakan ekonomi pemerintah</p>
-            </article>
-            <article class="card video-card" data-video-id="yjjVJoZhDRw">
-                <img src="https://img.youtube.com/vi/yjjVJoZhDRw/maxresdefault.jpg" alt="Personal Vlog"
-                    class="video-thumb" />
-                <h3>Personal Vlog</h3>
-                <p>Vlog singkat tentang personal daily activities</p>
-            </article>
-            <article class="card video-card" data-video-id="PZCvvhzt58c">
-                <img src="https://img.youtube.com/vi/PZCvvhzt58c/maxresdefault.jpg" alt="Ramadhan Content"
-                    class="video-thumb" />
-                <h3>Konten Ramadhan</h3>
-                <p>Membuat konten dengan format 2 role play selama Bulan Ramadhan</p>
-            </article>
+    <main class="gallery-page">
+        <section class="gallery-hero">
+            <div class="gallery-hero-grid">
+                <div>
+                    <p class="gallery-kicker">02 — Video Work</p>
+                    <h1>Work that moves<br><span>with purpose.</span></h1>
+                </div>
 
-            <article class="card video-card" data-video-id="PW5a6SMLnTk">
-                <img src="https://img.youtube.com/vi/PW5a6SMLnTk/maxresdefault.jpg" alt="School Documentary"
-                    class="video-thumb" />
-                <h3>Dokumentasi Kegiatan Sekolah</h3>
-                <p>Membuat konten untuk praktik kegiatan belajar siswa</p>
-            </article>
-            <article class="card video-card" data-video-id="58yerbwfJec">
-                <img src="https://img.youtube.com/vi/58yerbwfJec/maxresdefault.jpg" alt="Mini Short Movie"
-                    class="video-thumb" />
-                <h3>Mini Short Movie (Horror)</h3>
-                <p>Membuat film pendek dengan genre horor dengan memainkan efek horror</p>
-            </article>
+                <p class="gallery-intro">
+                    A collection of video editing projects across educational content,
+                    vlogs, social media, documentaries, and short-form storytelling.
+                    Each project is edited with attention to pacing, structure, and visual communication.
+                </p>
+            </div>
+        </section>
 
-            <article class="card video-card" data-video-id="8n9NCpond0I">
-                <img src="https://img.youtube.com/vi/8n9NCpond0I/maxresdefault.jpg" alt="Game Play"
-                    class="video-thumb" />
-                <h3>Educational with Fun Content</h3>
-                <p>Konten bermain dengan elemen edukatif tebak-tebakan ibukota provinsi di Indonesia</p>
-            </article>
+        <section class="gallery-section" aria-label="Video portfolio">
+            <div class="gallery-grid">
 
-            <article class="card video-card" data-video-id="lgyyXxwkSBQ">
-                <img src="https://img.youtube.com/vi/lgyyXxwkSBQ/maxresdefault.jpg" alt="Mini Short Movie"
-                    class="video-thumb" />
-                <h3>Short Movie (History)</h3>
-                <p>Membuat film pendek dengan tema Sumpah Pemuda</p>
-            </article>
-        </div>
-        <a href="../index.html" class="btn-outline" style="margin-top: 1rem">Kembali ke Home</a>
+                <article class="gallery-card video-card" data-video-id="50JD16I07nw"
+                    data-title="Personal Education Edit">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/50JD16I07nw/maxresdefault.jpg"
+                            alt="Thumbnail for Personal Education Edit" />
+                        <span class="gallery-tag">Educational</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Personal Education Edit</h2>
+                            <p>Educational content about government economic policy, edited with a structured and
+                                informative flow.</p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="yjjVJoZhDRw" data-title="Personal Vlog">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/yjjVJoZhDRw/maxresdefault.jpg"
+                            alt="Thumbnail for Personal Vlog" />
+                        <span class="gallery-tag">Vlog</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Personal Vlog</h2>
+                            <p>A short personal vlog focused on everyday activities, pacing, and natural storytelling.
+                            </p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="PZCvvhzt58c" data-title="Ramadan Content">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/PZCvvhzt58c/maxresdefault.jpg"
+                            alt="Thumbnail for Ramadan Content" />
+                        <span class="gallery-tag">Role Play</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Ramadan Content</h2>
+                            <p>A two-role format created for Ramadan, combining simple storytelling with character-based
+                                presentation.</p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="PW5a6SMLnTk"
+                    data-title="School Activity Documentation">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/PW5a6SMLnTk/maxresdefault.jpg"
+                            alt="Thumbnail for School Activity Documentation" />
+                        <span class="gallery-tag">Documentary</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>School Activity Documentation</h2>
+                            <p>Event and learning activity documentation designed to capture the process and atmosphere
+                                of the experience.</p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="58yerbwfJec"
+                    data-title="Mini Short Film — Horror">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/58yerbwfJec/maxresdefault.jpg"
+                            alt="Thumbnail for Mini Short Film — Horror" />
+                        <span class="gallery-tag">Short Film</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Mini Short Film — Horror</h2>
+                            <p>A short horror project exploring atmosphere, visual effects, and tension through editing.
+                            </p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="8n9NCpond0I"
+                    data-title="Educational Fun Content">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/8n9NCpond0I/maxresdefault.jpg"
+                            alt="Thumbnail for Educational Fun Content" />
+                        <span class="gallery-tag">Edutainment</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Educational Fun Content</h2>
+                            <p>An educational guessing-game format about Indonesian provincial capitals, designed to
+                                stay engaging and accessible.</p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+                <article class="gallery-card video-card" data-video-id="lgyyXxwkSBQ"
+                    data-title="Short Film — Youth Pledge">
+                    <div class="gallery-media">
+                        <img src="https://img.youtube.com/vi/lgyyXxwkSBQ/maxresdefault.jpg"
+                            alt="Thumbnail for Short Film — Youth Pledge" />
+                        <span class="gallery-tag">History</span>
+                        <span class="gallery-play" aria-hidden="true">▶</span>
+                    </div>
+                    <div class="gallery-info">
+                        <div>
+                            <h2>Short Film — Youth Pledge</h2>
+                            <p>A historical short film built around the theme of Sumpah Pemuda and presented through
+                                visual storytelling.</p>
+                        </div>
+                        <span class="gallery-arrow">↗</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="gallery-footer">
+                <p class="gallery-footer-note">More work available on request.</p>
+                <a href="../index.html" class="gallery-back">← Back to portfolio</a>
+            </div>
+        </section>
     </main>
 
-    <!-- Video Modal -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <button id="videoModalClose" class="modal-close">&times;</button>
-            <h3 id="videoModalTitle"></h3>
-            <div class="video-wrapper">
-                <iframe id="videoModalIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+    <div class="gallery-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+        <div class="gallery-modal-content">
+            <button class="gallery-close" id="videoModalClose" aria-label="Close video">&times;</button>
+            <h2 id="videoModalTitle"></h2>
+            <iframe id="videoModalIframe" class="gallery-video" src="" title="Video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
     </div>
 
-    <script src="../script.js"></script>
+    <script>
+        const navToggle = document.getElementById("navToggle");
+        const mainNav = document.getElementById("mainNav");
+
+        navToggle?.addEventListener("click", () => {
+            const active = mainNav.classList.toggle("active");
+            navToggle.setAttribute("aria-expanded", active);
+        });
+
+        const themeToggle = document.getElementById("themeToggle");
+
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-theme");
+            if (themeToggle) themeToggle.textContent = "☀️";
+        }
+
+        themeToggle?.addEventListener("click", () => {
+            document.body.classList.toggle("light-theme");
+
+            const light = document.body.classList.contains("light-theme");
+            localStorage.setItem("theme", light ? "light" : "dark");
+            themeToggle.textContent = light ? "☀️" : "🌙";
+        });
+
+        const videoModal = document.getElementById("videoModal");
+        const videoIframe = document.getElementById("videoModalIframe");
+        const videoTitle = document.getElementById("videoModalTitle");
+        const videoClose = document.getElementById("videoModalClose");
+
+        document.querySelectorAll(".video-card").forEach(card => {
+            card.addEventListener("click", () => {
+                const id = card.dataset.videoId;
+                const title = card.dataset.title;
+
+                videoTitle.textContent = title;
+                videoIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+                videoModal.classList.add("open");
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        function closeVideoModal() {
+            videoModal.classList.remove("open");
+            videoIframe.src = "";
+            document.body.style.overflow = "";
+        }
+
+        videoClose?.addEventListener("click", closeVideoModal);
+
+        videoModal?.addEventListener("click", event => {
+            if (event.target === videoModal) closeVideoModal();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && videoModal.classList.contains("open")) {
+                closeVideoModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
