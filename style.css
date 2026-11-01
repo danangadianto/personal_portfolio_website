@@ -1080,100 +1080,147 @@ a {
    SKILLS
    ========================================================= */
 
+/* =========================================================
+   SKILLS
+   ========================================================= */
+
 .skills-section {
     border-bottom: 1px solid var(--line);
 }
 
+/* Skills heading */
+.skills-section .section-heading>div {
+    max-width: 900px;
+}
+
+.skills-section .section-heading h2 {
+    font-size: clamp(3rem, 6.2vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+}
+
+.skills-section .section-note {
+    max-width: 340px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Skills grid */
 .skills-grid {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1px;
-
     margin-top: 4rem;
-
     background: var(--line);
-
     border: 1px solid var(--line);
 }
 
 .skill-card {
     position: relative;
-
-    min-height: 330px;
-
-    padding: 2rem;
-
+    min-width: 0;
+    min-height: 370px;
+    padding: clamp(1.5rem, 2.5vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background: var(--bg);
 }
 
-.skill-number {
-    position: absolute;
-
-    right: 1.5rem;
-    top: 1.5rem;
-
-    color: var(--muted);
-
-    font-size: 0.68rem;
-}
-
+/* Icon */
 .skill-icon {
     display: grid;
-
     place-items: center;
-
-    width: 46px;
-    height: 46px;
-
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
     border: 1px solid var(--line-strong);
-
     border-radius: 50%;
-
     color: var(--accent);
-
-    font-size: 1.25rem;
 }
 
+.skill-icon svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+/* Card title */
 .skill-card h3 {
-    margin: 4rem 0 0.6rem;
-
-    font-size: 1.4rem;
-
-    letter-spacing: -0.035em;
+    margin: auto 0 0.75rem;
+    padding-top: 3.5rem;
+    font-size: clamp(1.5rem, 2vw, 1.9rem);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
 }
 
+/* Card description */
 .skill-card p {
-    max-width: 330px;
-
+    max-width: 370px;
     margin: 0;
-
     color: var(--muted);
-
-    font-size: 0.84rem;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
+/* Software and platform tags */
 .skill-tags {
     display: flex;
-
     flex-wrap: wrap;
-
-    gap: 0.45rem;
-
+    gap: 0.55rem;
     margin-top: 1.5rem;
 }
 
 .skill-tags span {
-    padding: 0.3rem 0.55rem;
-
+    padding: 0.4rem 0.75rem;
     border: 1px solid var(--line);
-
     border-radius: 999px;
-
     color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
 
-    font-size: 0.67rem;
+/* Tablet */
+@media (max-width: 900px) {
+    .skills-section .row-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .skills-section .section-note {
+        max-width: 520px;
+    }
+
+    .skill-card {
+        min-height: 350px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+    .skills-section .section-heading h2 {
+        font-size: clamp(2.7rem, 10vw, 4rem);
+        line-height: 1;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        margin-top: 2.5rem;
+    }
+
+    .skill-card {
+        min-height: 300px;
+        padding: 2rem;
+    }
+
+    .skill-card h3 {
+        padding-top: 2.75rem;
+        font-size: 1.65rem;
+    }
+
+    .skill-card p {
+        font-size: 0.95rem;
+    }
 }
 
 
@@ -1608,5 +1655,118 @@ a {
         animation-duration: 0.01ms !important;
 
         animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================================================
+   PHOTOGRAPHY INTRO — SMALL HOMEPAGE ADDITION
+   ========================================================= */
+
+.photography-intro {
+    max-width: 650px;
+    margin: 0.8rem 0 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   CINEMATIC ENTRANCE & SCROLL REVEAL
+========================================================= */
+
+/* HERO TEXT — ENTER FROM LEFT */
+html.motion-ready .hero-content [data-hero-reveal] {
+    opacity: 0;
+    transform: translateX(-56px);
+    transition:
+        opacity 850ms cubic-bezier(.22, 1, .36, 1),
+        transform 950ms cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--motion-delay, 0ms);
+}
+
+html.motion-ready .hero-content [data-hero-reveal].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* HERO PHOTO — ENTER FROM RIGHT */
+html.motion-ready .hero-frame {
+    opacity: 0;
+    transform: translate(105px, 34px) rotate(11deg) scale(.94);
+    transition:
+        opacity 1100ms cubic-bezier(.22, 1, .36, 1) 180ms,
+        transform 1350ms cubic-bezier(.22, 1, .36, 1) 180ms;
+}
+
+html.motion-ready .hero-frame.is-visible {
+    opacity: 1;
+    transform: rotate(3deg);
+}
+
+/* FIRST ORBIT — ENTER FROM UPPER LEFT */
+html.motion-ready .hero-orbit-one {
+    opacity: 0;
+    transform: translate(-85px, -55px) scale(.72) rotate(-18deg);
+    transition:
+        opacity 1050ms ease 80ms,
+        transform 1450ms cubic-bezier(.2, .8, .2, 1) 80ms;
+}
+
+html.motion-ready .hero-orbit-one.is-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0);
+}
+
+/* SECOND ORBIT — ENTER FROM LOWER RIGHT */
+html.motion-ready .hero-orbit-two {
+    opacity: 0;
+    transform: translate(95px, 65px) scale(1.18) rotate(16deg);
+    transition:
+        opacity 1250ms ease 240ms,
+        transform 1600ms cubic-bezier(.2, .8, .2, 1) 240ms;
+}
+
+html.motion-ready .hero-orbit-two.is-visible {
+    opacity: .55;
+    transform: translate(0, 0) scale(1) rotate(0);
+}
+
+/* SCROLL REVEAL */
+html.motion-ready [data-scroll-reveal] {
+    opacity: 0;
+    transition:
+        opacity 780ms cubic-bezier(.22, 1, .36, 1),
+        transform 900ms cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--motion-delay, 0ms);
+}
+
+html.motion-ready [data-scroll-reveal="left"] {
+    transform: translate(-42px, 18px);
+}
+
+html.motion-ready [data-scroll-reveal="right"] {
+    transform: translate(42px, 18px);
+}
+
+html.motion-ready [data-scroll-reveal="up"] {
+    transform: translateY(34px);
+}
+
+html.motion-ready [data-scroll-reveal].is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+
+    html.motion-ready .hero-content [data-hero-reveal],
+    html.motion-ready .hero-frame,
+    html.motion-ready .hero-orbit-one,
+    html.motion-ready .hero-orbit-two,
+    html.motion-ready [data-scroll-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
