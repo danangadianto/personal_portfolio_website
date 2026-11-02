@@ -166,7 +166,6 @@ const photographyItems = shuffleArray([
 document.addEventListener("DOMContentLoaded", () => {
   // DOM ELEMENTS
   const grid = document.getElementById("galleryGrid");
-  const searchInput = document.getElementById("gallerySearch");
   const emptyState = document.getElementById("galleryEmpty");
   const countLabel = document.getElementById("photoCount");
   const activeCategoryLabel = document.getElementById("activeCategoryLabel");
@@ -198,11 +197,52 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastFocusedElement = null;
 
   const categoryNames = {
-    all: "All",
-    city: "City & Architecture",
-    wildlife: "Wildlife & Zoo",
-    everyday: "Everyday Moments",
+    en: {
+      all: "All",
+      city: "City & Architecture",
+      wildlife: "Wildlife & Zoo",
+      everyday: "Everyday Moments",
+    },
+    id: {
+      all: "Semua",
+      city: "Kota & Arsitektur",
+      wildlife: "Satwa Liar & Kebun Binatang",
+      everyday: "Momen Sehari-hari",
+    },
   };
+
+  const photoTitleTranslations = {
+    "Urban Perspective": "Perspektif Perkotaan",
+    "City Lights": "Cahaya Kota",
+    "Urban Geometry": "Geometri Kota",
+    "Giraffe": "Jerapah",
+    "A Quiet Encounter": "Pertemuan yang Tenang",
+    "A Quiet Afternoon": "Sore yang Tenang",
+    "Daily Journey": "Perjalanan Sehari-hari",
+    "Little Details": "Detail Kecil",
+  };
+
+  const getLanguage = () => window.portfolioLanguage?.() || "en";
+
+  function localizedItemText(item, key) {
+    if (getLanguage() !== "id") return item[key];
+    if (key === "title") {
+      if (photoTitleTranslations[item.title]) return photoTitleTranslations[item.title];
+      if (getLanguage() === "id") {
+        return item.title
+          .replace(/^City Photograph/, "Foto Perkotaan")
+          .replace(/^Wildlife Photograph/, "Foto Satwa")
+          .replace(/^Everyday Moment/, "Momen Sehari-hari");
+      }
+      return item.title;
+    }
+    if (key === "categoryLabel") return categoryNames.id[item.category] || item.categoryLabel;
+    if (key === "device" && item.device === "Device not specified") return "Perangkat tidak dicantumkan";
+    if (key === "description" && item.description === "An urban photograph from the collection.") return "Foto bertema perkotaan dari koleksi ini.";
+    if (key === "description" && item.description === "A wildlife photograph from the collection.") return "Foto satwa liar dari koleksi ini.";
+    if (key === "description" && item.description === "An everyday photograph from the collection.") return "Foto momen sehari-hari dari koleksi ini.";
+    return item[key];
+  }
 
   // =================================================
   // 6. CATEGORY COUNTS
@@ -249,21 +289,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // =================================================
 
   function renderGallery() {
-    const query = (searchInput?.value || "").trim().toLowerCase();
-
     visibleItems = photographyItems.filter((item) => {
-      const matchesCategory =
-        activeFilter === "all" || item.category === activeFilter;
-
-      const searchable = `
-        ${item.title}
-        ${item.categoryLabel}
-        ${item.location}
-        ${item.device}
-      `.toLowerCase();
-
-      return matchesCategory && searchable.includes(query);
+      return activeFilter === "all" || item.category === activeFilter;
     });
+
+    const language = getLanguage();
+    const ui = language === "id"
+      ? { view: "Lihat", photograph: "foto", photographs: "foto" }
+      : { view: "View", photograph: "photograph", photographs: "photographs" };
 
     // PHOTO CARDS
     grid.innerHTML = visibleItems
@@ -273,11 +306,15 @@ document.addEventListener("DOMContentLoaded", () => {
         class="gallery-photo-card"
         type="button"
         data-index="${index}"
-        aria-label="View ${escapeHTML(item.title)}"
+        aria-label="${ui.view} ${escapeHTML(localizedItemText(item, "title"))}"
       >
         <img
           src="${item.image}"
-          alt="${escapeHTML(item.alt)}"
+          alt="${escapeHTML(
+            getLanguage() === "id"
+              ? `${localizedItemText(item, "title")} — foto ${localizedItemText(item, "categoryLabel")}`
+              : item.alt
+          )}"
           loading="lazy"
           decoding="async"
         />
@@ -285,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="gallery-card-caption">
 
           <strong class="gallery-card-title">
-            ${escapeHTML(item.title)}
+            ${escapeHTML(localizedItemText(item, "title"))}
           </strong>
 
           <span class="gallery-card-location">
@@ -293,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </span>
 
           <span class="gallery-card-device">
-            ${escapeHTML(item.device)}
+            ${escapeHTML(localizedItemText(item, "device"))}
           </span>
 
         </span>
@@ -307,11 +344,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // PHOTO COUNT
     countLabel.textContent = `${visibleItems.length} ${
-      visibleItems.length === 1 ? "photograph" : "photographs"
+      language === "id"
+        ? "foto"
+        : (visibleItems.length === 1 ? "photograph" : "photographs")
     }`;
 
     // CATEGORY LABEL
-    activeCategoryLabel.textContent = `— ${categoryNames[activeFilter]}`;
+    activeCategoryLabel.textContent = `— ${categoryNames[language][activeFilter]}`;
 
     // CLICK EVENTS
     grid.querySelectorAll(".gallery-photo-card").forEach((card) => {
@@ -352,19 +391,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (lightboxImage) {
       lightboxImage.src = item.image;
-      lightboxImage.alt = item.alt;
+      lightboxImage.alt = getLanguage() === "id"
+        ? `Foto ${localizedItemText(item, "title")}`
+        : `${localizedItemText(item, "title")} photograph`;
     }
 
     if (lightboxCategory) {
-      lightboxCategory.textContent = item.categoryLabel;
+      lightboxCategory.textContent = localizedItemText(item, "categoryLabel");
     }
 
     if (lightboxTitle) {
-      lightboxTitle.textContent = item.title;
+      lightboxTitle.textContent = localizedItemText(item, "title");
     }
 
     if (lightboxDescription) {
-      lightboxDescription.textContent = `${item.location} · ${item.device}`;
+      lightboxDescription.textContent = `${item.location} · ${localizedItemText(item, "device")}`;
     }
 
     if (lightboxIndex) {
@@ -434,13 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =================================================
-  // 14. SEARCH
-  // =================================================
-
-  searchInput?.addEventListener("input", renderGallery);
-
-  // =================================================
-  // 15. LIGHTBOX BUTTONS
+  // 14. LIGHTBOX BUTTONS
   // =================================================
 
   closeButton?.addEventListener("click", closeLightbox);
@@ -460,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =================================================
-  // 16. KEYBOARD CONTROLS
+  // 15. KEYBOARD CONTROLS
   // =================================================
 
   document.addEventListener("keydown", (event) => {
@@ -480,13 +515,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =================================================
-  // 17. INITIALIZATION
+  // 16. INITIALIZATION
   // =================================================
 
   updateFilterCounts();
   renderGallery();
 
-
+  document.addEventListener("portfolio:languagechange", () => {
+    renderGallery();
+    if (lightbox?.classList.contains("open")) {
+      updateLightbox();
+    }
+  });
 });
 
 

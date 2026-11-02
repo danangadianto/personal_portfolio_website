@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-language="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -193,27 +193,6 @@
             font-size: .78rem;
         }
 
-        .gallery-back {
-            display: inline-flex;
-            align-items: center;
-            gap: .55rem;
-            min-height: 46px;
-            padding: .7rem 1rem;
-            border: 1px solid var(--line-strong);
-            border-radius: 999px;
-            color: var(--text);
-            text-decoration: none;
-            font-size: .8rem;
-            font-weight: 750;
-            transition: border-color .2s ease, color .2s ease, transform .2s ease;
-        }
-
-        .gallery-back:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
         /* Modal */
         .gallery-modal {
             position: fixed;
@@ -301,10 +280,73 @@
                 flex-direction: column;
             }
         }
+        /* Floating Back to Home — fixed at the lower-left corner */
+        .floating-home {
+            position: fixed;
+            left: clamp(1rem, 3vw, 2rem);
+            bottom: clamp(1rem, 3vw, 2rem);
+            z-index: 80;
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 50%;
+            background: var(--accent);
+            color: #111;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 220ms ease, box-shadow 220ms ease;
+        }
+
+        .floating-home:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+        }
+
+        .floating-home:active {
+            transform: translateY(-1px) scale(.98);
+        }
+
+        .floating-home:focus-visible {
+            outline: 3px solid var(--text);
+            outline-offset: 4px;
+        }
+
+        .floating-home svg {
+            display: block;
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (max-width: 720px) {
+            .floating-home {
+                left: 1rem;
+                bottom: 1rem;
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-home,
+            .floating-home:hover,
+            .floating-home:active {
+                transition: none;
+                transform: none;
+            }
+        }
+
     </style>
 </head>
 
-<body>
+<body class="gallery-page">
     <header class="site-header">
         <a class="brand" href="../index.html" aria-label="Danang Adianto home">
             <span class="brand-mark">D</span>
@@ -324,6 +366,33 @@
             <a href="video.html">Video</a>
             <a href="../index.html#contact">Contact</a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <button class="language-toggle" id="languageToggle" type="button"
+                aria-label="Switch language to Indonesian" aria-pressed="false">
+                <span class="language-label language-label-en" aria-hidden="true">EN</span>
+                <span class="language-track" aria-hidden="true">
+                    <span class="language-indicator"></span>
+                    <span class="language-option language-option-en"><svg class="flag-svg flag-us" viewBox="0 0 30 20" role="img" aria-label="United States flag" xmlns="http://www.w3.org/2000/svg">
+  <rect width="30" height="20" fill="#fff"/>
+  <path fill="#B22234" d="M0 0h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V7.7H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V20H0z"/>
+  <rect width="12.8" height="10.77" fill="#3C3B6E"/>
+  <g fill="#fff">
+    <circle cx="1.5" cy="1.1" r=".38"/><circle cx="4" cy="1.1" r=".38"/><circle cx="6.5" cy="1.1" r=".38"/><circle cx="9" cy="1.1" r=".38"/><circle cx="11.5" cy="1.1" r=".38"/>
+    <circle cx="2.75" cy="2.3" r=".38"/><circle cx="5.25" cy="2.3" r=".38"/><circle cx="7.75" cy="2.3" r=".38"/><circle cx="10.25" cy="2.3" r=".38"/>
+    <circle cx="1.5" cy="3.5" r=".38"/><circle cx="4" cy="3.5" r=".38"/><circle cx="6.5" cy="3.5" r=".38"/><circle cx="9" cy="3.5" r=".38"/><circle cx="11.5" cy="3.5" r=".38"/>
+    <circle cx="2.75" cy="4.7" r=".38"/><circle cx="5.25" cy="4.7" r=".38"/><circle cx="7.75" cy="4.7" r=".38"/><circle cx="10.25" cy="4.7" r=".38"/>
+    <circle cx="1.5" cy="5.9" r=".38"/><circle cx="4" cy="5.9" r=".38"/><circle cx="6.5" cy="5.9" r=".38"/><circle cx="9" cy="5.9" r=".38"/><circle cx="11.5" cy="5.9" r=".38"/>
+    <circle cx="2.75" cy="7.1" r=".38"/><circle cx="5.25" cy="7.1" r=".38"/><circle cx="7.75" cy="7.1" r=".38"/><circle cx="10.25" cy="7.1" r=".38"/>
+    <circle cx="1.5" cy="8.3" r=".38"/><circle cx="4" cy="8.3" r=".38"/><circle cx="6.5" cy="8.3" r=".38"/><circle cx="9" cy="8.3" r=".38"/><circle cx="11.5" cy="8.3" r=".38"/>
+    <circle cx="2.75" cy="9.5" r=".38"/><circle cx="5.25" cy="9.5" r=".38"/><circle cx="7.75" cy="9.5" r=".38"/><circle cx="10.25" cy="9.5" r=".38"/>
+  </g>
+</svg></span>
+                    <span class="language-option language-option-id"><svg class="flag-svg flag-id" viewBox="0 0 30 20" role="img" aria-label="Indonesian flag" xmlns="http://www.w3.org/2000/svg">
+  <rect width="30" height="10" fill="#CE1126"/>
+  <rect y="10" width="30" height="10" fill="#fff"/>
+</svg></span>
+                </span>
+                <span class="language-label language-label-id" aria-hidden="true">ID</span>
+            </button>
         </nav>
     </header>
 
@@ -474,10 +543,16 @@
 
             <div class="gallery-footer">
                 <p class="gallery-footer-note">More work available on request.</p>
-                <a href="../index.html" class="gallery-back">← Back to portfolio</a>
             </div>
         </section>
     </main>
+
+    <a class="floating-home" href="../index.html" aria-label="Back to home"
+        title="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 12H5M11.5 5.5 5 12l6.5 6.5" />
+        </svg>
+    </a>
 
     <div class="gallery-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
         <div class="gallery-modal-content">
@@ -488,66 +563,7 @@
                 allowfullscreen></iframe>
         </div>
     </div>
-
-    <script>
-        const navToggle = document.getElementById("navToggle");
-        const mainNav = document.getElementById("mainNav");
-
-        navToggle?.addEventListener("click", () => {
-            const active = mainNav.classList.toggle("active");
-            navToggle.setAttribute("aria-expanded", active);
-        });
-
-        const themeToggle = document.getElementById("themeToggle");
-
-        if (localStorage.getItem("theme") === "light") {
-            document.body.classList.add("light-theme");
-            if (themeToggle) themeToggle.textContent = "☀️";
-        }
-
-        themeToggle?.addEventListener("click", () => {
-            document.body.classList.toggle("light-theme");
-
-            const light = document.body.classList.contains("light-theme");
-            localStorage.setItem("theme", light ? "light" : "dark");
-            themeToggle.textContent = light ? "☀️" : "🌙";
-        });
-
-        const videoModal = document.getElementById("videoModal");
-        const videoIframe = document.getElementById("videoModalIframe");
-        const videoTitle = document.getElementById("videoModalTitle");
-        const videoClose = document.getElementById("videoModalClose");
-
-        document.querySelectorAll(".video-card").forEach(card => {
-            card.addEventListener("click", () => {
-                const id = card.dataset.videoId;
-                const title = card.dataset.title;
-
-                videoTitle.textContent = title;
-                videoIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-                videoModal.classList.add("open");
-                document.body.style.overflow = "hidden";
-            });
-        });
-
-        function closeVideoModal() {
-            videoModal.classList.remove("open");
-            videoIframe.src = "";
-            document.body.style.overflow = "";
-        }
-
-        videoClose?.addEventListener("click", closeVideoModal);
-
-        videoModal?.addEventListener("click", event => {
-            if (event.target === videoModal) closeVideoModal();
-        });
-
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && videoModal.classList.contains("open")) {
-                closeVideoModal();
-            }
-        });
-    </script>
+    <script src="../script.js"></script>
 </body>
 
 </html>

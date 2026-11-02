@@ -11,19 +11,6 @@
     border-bottom: 1px solid var(--line);
 }
 
-.gallery-back {
-    display: inline-block;
-    margin-bottom: 3.5rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.82rem;
-    transition: color 0.2s ease;
-}
-
-.gallery-back:hover {
-    color: var(--accent);
-}
-
 .gallery-hero h1 {
     margin: 0;
     font-size: clamp(3rem, 7vw, 6.4rem);
@@ -107,39 +94,6 @@
 .gallery-toolbar-copy h2 span {
     color: var(--muted);
     font-weight: 400;
-}
-
-.gallery-search {
-    position: relative;
-    display: block;
-    width: min(280px, 100%);
-}
-
-.gallery-search input {
-    width: 100%;
-    min-height: 44px;
-    padding: 0.7rem 2.3rem 0.7rem 0.9rem;
-    border: 1px solid var(--line-strong);
-    border-radius: 2px;
-    outline: none;
-    color: var(--text);
-    background: var(--card);
-    font: inherit;
-    font-size: 0.8rem;
-}
-
-.gallery-search input:focus {
-    border-color: var(--accent);
-}
-
-.gallery-search>span:last-child {
-    position: absolute;
-    right: 0.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 1.3rem;
-    pointer-events: none;
 }
 
 .gallery-filters {
@@ -293,6 +247,82 @@
     border: 0;
 }
 
+/* Floating Back to Home — fixed at the lower-left corner */
+.floating-home {
+    position: fixed;
+    left: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    z-index: 80;
+
+    display: grid;
+    place-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+
+    background: var(--accent);
+    color: #111;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+}
+
+.floating-home:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.floating-home:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.floating-home:focus-visible {
+    outline: 3px solid var(--text);
+    outline-offset: 4px;
+}
+
+.floating-home svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (max-width: 720px) {
+    .floating-home {
+        left: 1rem;
+        bottom: 1rem;
+        width: 46px;
+        height: 46px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-home {
+        transition: none;
+    }
+
+    .floating-home:hover,
+    .floating-home:active {
+        transform: none;
+    }
+}
+
+
 /* Full-screen image viewer */
 .gallery-lightbox {
     position: fixed;
@@ -426,10 +456,6 @@
         align-items: stretch;
         flex-direction: column;
         gap: 1.2rem;
-    }
-
-    .gallery-search {
-        width: 100%;
     }
 
     /* Two-column layout on mobile */

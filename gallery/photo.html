@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-language="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -33,8 +33,35 @@
             <a href="../index.html#experience">Experience</a>
             <a href="../index.html#contact">Contact</a>
 
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
                 ☾
+            </button>
+            <button class="language-toggle" id="languageToggle" type="button"
+                aria-label="Switch language to Indonesian" aria-pressed="false">
+                <span class="language-label language-label-en" aria-hidden="true">EN</span>
+                <span class="language-track" aria-hidden="true">
+                    <span class="language-indicator"></span>
+                    <span class="language-option language-option-en"><svg class="flag-svg flag-us" viewBox="0 0 30 20" role="img" aria-label="United States flag" xmlns="http://www.w3.org/2000/svg">
+  <rect width="30" height="20" fill="#fff"/>
+  <path fill="#B22234" d="M0 0h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V7.7H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V20H0z"/>
+  <rect width="12.8" height="10.77" fill="#3C3B6E"/>
+  <g fill="#fff">
+    <circle cx="1.5" cy="1.1" r=".38"/><circle cx="4" cy="1.1" r=".38"/><circle cx="6.5" cy="1.1" r=".38"/><circle cx="9" cy="1.1" r=".38"/><circle cx="11.5" cy="1.1" r=".38"/>
+    <circle cx="2.75" cy="2.3" r=".38"/><circle cx="5.25" cy="2.3" r=".38"/><circle cx="7.75" cy="2.3" r=".38"/><circle cx="10.25" cy="2.3" r=".38"/>
+    <circle cx="1.5" cy="3.5" r=".38"/><circle cx="4" cy="3.5" r=".38"/><circle cx="6.5" cy="3.5" r=".38"/><circle cx="9" cy="3.5" r=".38"/><circle cx="11.5" cy="3.5" r=".38"/>
+    <circle cx="2.75" cy="4.7" r=".38"/><circle cx="5.25" cy="4.7" r=".38"/><circle cx="7.75" cy="4.7" r=".38"/><circle cx="10.25" cy="4.7" r=".38"/>
+    <circle cx="1.5" cy="5.9" r=".38"/><circle cx="4" cy="5.9" r=".38"/><circle cx="6.5" cy="5.9" r=".38"/><circle cx="9" cy="5.9" r=".38"/><circle cx="11.5" cy="5.9" r=".38"/>
+    <circle cx="2.75" cy="7.1" r=".38"/><circle cx="5.25" cy="7.1" r=".38"/><circle cx="7.75" cy="7.1" r=".38"/><circle cx="10.25" cy="7.1" r=".38"/>
+    <circle cx="1.5" cy="8.3" r=".38"/><circle cx="4" cy="8.3" r=".38"/><circle cx="6.5" cy="8.3" r=".38"/><circle cx="9" cy="8.3" r=".38"/><circle cx="11.5" cy="8.3" r=".38"/>
+    <circle cx="2.75" cy="9.5" r=".38"/><circle cx="5.25" cy="9.5" r=".38"/><circle cx="7.75" cy="9.5" r=".38"/><circle cx="10.25" cy="9.5" r=".38"/>
+  </g>
+</svg></span>
+                    <span class="language-option language-option-id"><svg class="flag-svg flag-id" viewBox="0 0 30 20" role="img" aria-label="Indonesian flag" xmlns="http://www.w3.org/2000/svg">
+  <rect width="30" height="10" fill="#CE1126"/>
+  <rect y="10" width="30" height="10" fill="#fff"/>
+</svg></span>
+                </span>
+                <span class="language-label language-label-id" aria-hidden="true">ID</span>
             </button>
         </nav>
 
@@ -44,10 +71,6 @@
     <main>
 
         <section class="gallery-hero">
-
-            <a class="gallery-back" href="../index.html#work">
-                ← Back to portfolio
-            </a>
 
             <p class="eyebrow">SELECTED PHOTOGRAPHY</p>
 
@@ -90,15 +113,6 @@
 
                 </div>
 
-                <label class="gallery-search">
-
-                    <span class="sr-only">Search photographs</span>
-
-                    <input id="gallerySearch" type="search" placeholder="Search photographs..." autocomplete="off" />
-
-                    <span aria-hidden="true">⌕</span>
-
-                </label>
 
             </div>
 
@@ -134,7 +148,7 @@
 
 
                 <p class="gallery-empty" id="galleryEmpty" hidden>
-                    No photographs found. Try another search or category.
+                    No photographs found in this category.
                 </p>
 
                 <p class="gallery-footnote">
@@ -154,10 +168,16 @@
 
         <span>Photography / Selected works</span>
 
-        <a href="#top">Back to top ↑</a>
 
     </footer>
 
+
+    <a class="floating-home" href="../index.html" aria-label="Back to home"
+        title="Back to home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 12H5M11.5 5.5 5 12l6.5 6.5" />
+        </svg>
+    </a>
 
     <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer"
         aria-hidden="true">
