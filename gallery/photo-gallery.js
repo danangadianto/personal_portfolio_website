@@ -86,7 +86,7 @@ const PHOTO_CONFIG = {
 
   nature: {
     folder: "nature",
-    count: 104,
+    count: 369,
     category: "wildlife",
     categoryLabel: "Wildlife & Zoo",
     titlePrefix: "Wildlife Photograph",
@@ -140,6 +140,25 @@ function generatePhotographyItems(config) {
 // =====================================================
 // 4. RANDOMIZE ALL PHOTOGRAPHS
 // =====================================================
+
+// Load numbered photos whether the filename is "(1).png" or " (1).png".
+// The gallery tries the standard filename first, then retries with one
+// leading space before the opening parenthesis if the first path is missing.
+function setPhotoImageSource(imageElement, imagePath) {
+  if (!imageElement || !imagePath) return;
+
+  imageElement.onerror = () => {
+    imageElement.onerror = null;
+
+    const spacedPath = imagePath.replace(/\/\((\d+)\)\.png$/i, "/ ($1).png");
+
+    if (spacedPath !== imagePath) {
+      imageElement.src = spacedPath;
+    }
+  };
+
+  imageElement.src = imagePath;
+}
 
 function shuffleArray(array) {
   const shuffled = [...array];
@@ -309,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
         aria-label="${ui.view} ${escapeHTML(localizedItemText(item, "title"))}"
       >
         <img
-          src="${item.image}"
+          data-photo-src="${item.image}"
           alt="${escapeHTML(
             getLanguage() === "id"
               ? `${localizedItemText(item, "title")} — foto ${localizedItemText(item, "categoryLabel")}`
@@ -338,6 +357,13 @@ document.addEventListener("DOMContentLoaded", () => {
     `,
       )
       .join("");
+
+    // Support both "(1).png" and " (1).png" file naming styles.
+    grid.querySelectorAll(".gallery-photo-card img").forEach((image) => {
+      const card = image.closest(".gallery-photo-card");
+      const item = visibleItems[Number(card?.dataset.index)];
+      if (item) setPhotoImageSource(image, image.dataset.photoSrc || item.image);
+    });
 
     // EMPTY STATE
     emptyState.hidden = visibleItems.length > 0;
@@ -390,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!item) return;
 
     if (lightboxImage) {
-      lightboxImage.src = item.image;
+      setPhotoImageSource(lightboxImage, item.image);
       lightboxImage.alt = getLanguage() === "id"
         ? `Foto ${localizedItemText(item, "title")}`
         : `${localizedItemText(item, "title")} photograph`;

@@ -10,6 +10,29 @@
 
     <title>Photography Gallery — Danang Adianto</title>
 
+    <script>
+        (function () {
+            try {
+                var savedLanguage = localStorage.getItem("portfolioLanguage");
+                var language = savedLanguage === "id" ? "id" : "en";
+
+                document.documentElement.lang = language;
+                document.documentElement.dataset.language = language;
+
+                if (language === "id") {
+                    document.documentElement.classList.add("language-pending");
+                }
+            } catch (error) {
+                document.documentElement.lang = "en";
+                document.documentElement.dataset.language = "en";
+            }
+        })();
+    </script>
+    <style>
+        html.language-pending body {
+            visibility: hidden;
+        }
+    </style>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="photo-gallery.css" />
 </head>
